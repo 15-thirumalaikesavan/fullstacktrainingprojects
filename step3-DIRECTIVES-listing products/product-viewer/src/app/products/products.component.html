@@ -1,0 +1,35 @@
+ <!-- <div style="background-color:lightblue"> -->
+ <!-- <h4>Nested Products Component</h4> -->
+   <br>
+   <div class="card bg-success text-white" >
+     <div class="card-body"  *ngIf='products && products.length'>
+        <button class='btn btn-warning'
+        (click)='toggleImage()'>
+  {{showImage ? 'Hide' : 'Show'}} Image
+</button>
+<br><br>
+        <table class="table table-hover" >
+    <!-- <table class="table table-striped table-responsive"> -->
+        <thead class="bg-info">
+            <tr>
+<!-- <th>Id</th> -->
+              <th>Name</th>
+              <th>Price</th>
+              <th>Rating</th>
+              <th *ngIf='showImage' >Image</th>      
+            </tr>
+          </thead>
+      <tbody><tr *ngFor="let product of products">
+          <!-- <td>{{product.productId}}</td> -->
+          <td>{{product.productName}}</td>
+          <td>{{ product.price | currency:'USD':'symbol':'1.2-2' }}</td>
+          <td>{{product.rating}}</td>              
+          <td *ngIf='showImage'>
+              <img *ngIf='showImage' [src]='product.image' [title]='product.productName' [style.width.px]='imageWidth'
+                [style.margin.px]='imageMargin'>
+            </td>
+        </tr>
+       </tbody>
+  </table>
+</div>
+</div>
